@@ -1,4 +1,4 @@
-import { Redirect, Route} from "react-router-dom";
+import {Route, Navigate} from "react-router-dom";
 
 interface Props {
     loggedIn:boolean | undefined,
@@ -9,14 +9,11 @@ export function PrivateRouter({loggedIn, component}:Props){
         <>
         {
             loggedIn ? (
-                <Route component= {component} />
-
+                <Route element= {component} />
             ): (
-                <Redirect to="/auth" />
+                <Route path='*' element={<Navigate to="/auth"/>}/>
             )
         }
         </>
-
-
     );
 }

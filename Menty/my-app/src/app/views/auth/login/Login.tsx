@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
 import { AuthCard } from "../components/authCard/AuthCard";
-import logo from '/../../assets/img/descarga.png';
-import accountIcon from '/../../assets/icons/account.svg';
-import passwordIcon from '/../../assets/icons/password.svg';
-import { Link, useHistory } from 'react-router-dom';
+import logo from '../../../aseets/imag/form.png';
+import accountIcon from '../../../aseets/icons/icon.png';
+import passwordIcon from '../../../aseets/icons/contraseña.png';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../store/contexts/AuthContext';
 import { AuthService } from "../../../services/auth/AuthService";
 
@@ -11,8 +11,8 @@ import { AuthService } from "../../../services/auth/AuthService";
 
 export function Login() {
     const { dispatchUser }:any = useContext(AuthContext);
-    const [auth, setAuth] = useState ({email:'', pasword:''})
-    const history = useHistory();
+    const [auth, setAuth] = useState ({email:'', password:''})
+    const navigate = useNavigate();
 
     const handleSubmit = async (e:React.ChangeEvent<HTMLFormElement>) => {
       try {
@@ -22,7 +22,7 @@ export function Login() {
         if(resp.success){
           sessionStorage.setItem('user', JSON.stringify({...resp.data, loggedIn:true}));
           dispatchUser({type:'login', payload:resp.data});
-          history.replace('/dashboard/home');
+          navigate('/dashboard/home');
         }
       }catch(error){
 

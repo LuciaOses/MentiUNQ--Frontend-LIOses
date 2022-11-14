@@ -1,15 +1,21 @@
-import { Switch, Route, Redirect } from 'react-router-dom';
-import { Login } from './login/Login';
+import {
+  BrowserRouter as
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import { Login } from "./login/Login";
 
-
-export function AuthRouter(){
-   return (
-      <Switch>
-         <Route exact path="/auth/login">
-            <Login />
-         </Route>
-
-         <Redirect to="/auth/login" />
-      </Switch>
-   );
+export function AuthRouter() {
+  return (
+    <Routes>
+      <Route path="/auth/login">
+        <Login />
+      </Route>
+      <Route
+        path="*"
+        element={<Navigate to="/dashboard/home" replace />}
+      ></Route>
+    </Routes>
+  );
 }

@@ -15,6 +15,7 @@ const init = () => {
 };
 
 function App() {
+  <h1>Funciono!!</h1>
   const [user, dispatchUser] = useReducer(AuthReducer, {}, init);
   return (
     <AuthContext.Provider value={{user, dispatchUser}}>
