@@ -11,7 +11,7 @@ export function PrivateRouter({loggedIn, component}:Props){
             loggedIn ? (
                 <Route element= {component} />
             ): (
-                <Route path='*' element={<Navigate to="/auth"/>}/>
+                <Route path='*' element={<Navigate to="/auth" replace/>}/>
             )
         }
         </>

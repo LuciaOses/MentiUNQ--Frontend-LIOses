@@ -1,6 +1,5 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
-import { BrowserRouter as Routes, Route} from 'react-router-dom';
+import { BrowserRouter as Routes, Route, Navigate} from 'react-router-dom';
 import { AuthRouter } from "../views/auth/AuthRouter";
 import { DashboardRouter } from "../views/dashboard/DashboardRouter";
 import { AuthContext } from "../views/store/contexts/AuthContext";
@@ -22,7 +21,10 @@ export function AppRouter(){
         loggedIn={user?.loggedIn}
         component={DashboardRouter}
       />
-      <Link to= "dashboard/home" />
+      <Route
+        path="*"
+        element={<Navigate to="/dashboard/home" replace />}
+      />
     </Routes>
   );
 }
